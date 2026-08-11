@@ -1,0 +1,44 @@
+{
+  "market": {
+    "name": "Frontier AI Labs and Infrastructure",
+    "thesis": "The frontier AI market is a vertically coordinated system spanning model labs, hyperscalers, neoclouds, custom silicon, inference platforms, data infrastructure, power, and distribution.",
+    "verifiedAt": "2026-08-11",
+    "verificationStatus": "research-seed-not-yet-integrated",
+    "sourceUrls": [
+      "https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Vera-Rubin-Opens-Agentic-AI-Frontier/default.aspx",
+      "https://www.analysysmason.com/consulting/articles/neoclouds-ai-infrastructure/",
+      "https://www.abiresearch.com/blog/neocloud-market-trends",
+      "https://openai.com/index/stargate-michigan-data-center/",
+      "https://openai.com/index/stargate-sb-energy-partnership/",
+      "https://www.anthropic.com/news/google-broadcom-partnership-compute?cam=claude",
+      "https://www.anthropic.com/news/anthropic-amazon-compute?pubDate=20260225",
+      "https://www.together.ai/blog/announcing-our-series-c",
+      "https://qz.com/nvidia-lancium-investment-stargate-power-081026"
+    ]
+  },
+  "companies": [
+    {"name":"OpenAI","officialWebsite":"https://openai.com","primaryGeography":"United States","category":"company","description":"Frontier AI lab building and deploying models while coordinating large-scale infrastructure partnerships.","sourceUrls":["https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age/","https://openai.com/index/stargate-michigan-data-center/"]},
+    {"name":"Anthropic","officialWebsite":"https://www.anthropic.com","primaryGeography":"United States","category":"company","description":"Frontier AI lab developing Claude and securing multi-cloud compute capacity.","sourceUrls":["https://www.anthropic.com/news/google-broadcom-partnership-compute?cam=claude","https://www.anthropic.com/news/anthropic-amazon-compute?pubDate=20260225"]},
+    {"name":"Google","officialWebsite":"https://cloud.google.com","primaryGeography":"United States","category":"distribution","description":"Gemini and Google Cloud AI Hypercomputer provider, including TPU infrastructure.","sourceUrls":["https://www.anthropic.com/news/google-broadcom-partnership-compute?cam=claude"]},
+    {"name":"Amazon Web Services","officialWebsite":"https://aws.amazon.com","primaryGeography":"United States","category":"distribution","description":"Hyperscale cloud provider offering Trainium capacity and hosting Claude through Amazon Bedrock.","sourceUrls":["https://www.anthropic.com/news/anthropic-amazon-compute?pubDate=20260225"]},
+    {"name":"NVIDIA","officialWebsite":"https://www.nvidia.com","primaryGeography":"United States","category":"infrastructure","description":"GPU and full-stack AI computing platform supplier powering training and inference ecosystems.","sourceUrls":["https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Vera-Rubin-Opens-Agentic-AI-Frontier/default.aspx"]},
+    {"name":"Together AI","officialWebsite":"https://www.together.ai","primaryGeography":"United States","category":"infrastructure","description":"Production platform for open-weight AI combining models, inference, training infrastructure, and optimization software.","sourceUrls":["https://www.together.ai/blog/announcing-our-series-c"]},
+    {"name":"CoreWeave","officialWebsite":"https://www.coreweave.com","primaryGeography":"United States","category":"infrastructure","description":"NVIDIA Cloud Partner and GPU cloud provider for AI workloads.","sourceUrls":["https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Vera-Rubin-Opens-Agentic-AI-Frontier/default.aspx"]},
+    {"name":"Crusoe","officialWebsite":"https://www.crusoe.ai","primaryGeography":"United States","category":"infrastructure","description":"AI data-center and compute infrastructure company combining high-density compute with energy development.","sourceUrls":["https://www.analysysmason.com/consulting/articles/neoclouds-ai-infrastructure/"]},
+    {"name":"Lambda","officialWebsite":"https://lambda.ai","primaryGeography":"United States","category":"infrastructure","description":"NVIDIA Cloud Partner offering dedicated AI compute infrastructure.","sourceUrls":["https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Vera-Rubin-Opens-Agentic-AI-Frontier/default.aspx"]},
+    {"name":"Nebius","officialWebsite":"https://nebius.com","primaryGeography":"European Union","category":"infrastructure","description":"NVIDIA Cloud Partner providing AI cloud infrastructure.","sourceUrls":["https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Vera-Rubin-Opens-Agentic-AI-Frontier/default.aspx"]},
+    {"name":"Nscale","officialWebsite":"https://www.nscale.com","primaryGeography":"United Kingdom","category":"infrastructure","description":"NVIDIA Cloud Partner providing AI infrastructure capacity.","sourceUrls":["https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Vera-Rubin-Opens-Agentic-AI-Frontier/default.aspx"]},
+    {"name":"Lancium","officialWebsite":"https://www.lancium.com","primaryGeography":"United States","category":"infrastructure","description":"Power and land infrastructure company associated with Stargate AI data-center development.","sourceUrls":["https://qz.com/nvidia-lancium-investment-stargate-power-081026"]},
+    {"name":"SB Energy","officialWebsite":"https://sbenergy.com","primaryGeography":"United States","category":"infrastructure","description":"Energy and data-center development company partnered with SoftBank and OpenAI on Stargate infrastructure.","sourceUrls":["https://openai.com/index/stargate-sb-energy-partnership/"]},
+    {"name":"Oracle","officialWebsite":"https://www.oracle.com/cloud/","primaryGeography":"United States","category":"distribution","description":"Cloud and data-center partner in Stargate infrastructure, including the Michigan campus.","sourceUrls":["https://openai.com/index/stargate-michigan-data-center/"]},
+    {"name":"Broadcom","officialWebsite":"https://www.broadcom.com","primaryGeography":"United States","category":"infrastructure","description":"Custom silicon and networking company partnering with Google on next-generation AI compute infrastructure.","sourceUrls":["https://www.anthropic.com/news/google-broadcom-partnership-compute?cam=claude"]}
+  ],
+  "marketSignals": [
+    {"cardType":"insight","title":"Inference economics is becoming the next battleground","summary":"The market is shifting from training-only scarcity toward production inference economics, where latency, utilization, geography, and cost per outcome matter.","sourceUrls":["https://www.abiresearch.com/blog/neocloud-market-trends","https://www.analysysmason.com/consulting/articles/neoclouds-ai-infrastructure/"]},
+    {"cardType":"insight","title":"Neoclouds are becoming full infrastructure platforms","summary":"AI-native clouds are moving beyond GPU rental into purpose-built data centers, orchestration, networking, and developer-facing inference services.","sourceUrls":["https://www.analysysmason.com/consulting/articles/neoclouds-ai-infrastructure/"]},
+    {"cardType":"barrier","title":"Power and grid access constrain expansion","summary":"Power availability, grid interconnection, and high-density cooling are material constraints for new AI infrastructure.","sourceUrls":["https://qz.com/nvidia-lancium-investment-stargate-power-081026","https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age/"]},
+    {"cardType":"barrier","title":"Capital intensity creates capacity moats","summary":"The scale of compute, power, and data-center investment makes access to financing and long-term capacity a structural entry barrier.","sourceUrls":["https://www.analysysmason.com/consulting/articles/neoclouds-ai-infrastructure/","https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age/"]},
+    {"cardType":"culture","title":"Open and sovereign AI remains a strategic counterweight","summary":"Open-weight models and regional infrastructure are being positioned as alternatives to dependence on a small set of closed frontier providers.","sourceUrls":["https://www.together.ai/blog/announcing-our-series-c","https://www.anthropic.com/news/anthropic-amazon-compute?pubDate=20260225"]},
+    {"cardType":"vice","title":"Partner concentration is a material ecosystem risk","summary":"Heavy dependence on a small group of chip, cloud, power, and model partners can create concentration and negotiation risk; specific claims require ongoing verification.","sourceUrls":["https://openai.com/index/building-the-compute-infrastructure-for-the-intelligence-age/","https://www.anthropic.com/news/google-broadcom-partnership-compute?cam=claude"]}
+  ]
+}
