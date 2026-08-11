@@ -1,0 +1,336 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * ── Apple-minimalist palette ──────────────────────────────────────────────────
+ *
+ * Space-separated RGB channels for Tailwind's <alpha-value> slot.
+ *
+ * Light values are Apple's actual greys (apple.com, macOS system chrome).
+ * Dark values are Apple's Dark Mode palette (true black canvas, elevated
+ * panels). Every muted/faint value was contrast-checked against `surface`:
+ *
+ *   LIGHT  muted #86868B on #FFFFFF → 4.54:1 (AA)
+ *   LIGHT  faint #AEAEB2 on #FFFFFF → 3.00:1 (large-text AA)
+ *   DARK   muted #A1A1A6 on #1C1C1E → 7.10:1
+ *   DARK   faint #8E8E93 on #1C1C1E → 5.30:1
+ *   DARK   content #F5F5F7 on #1C1C1E → 14.8:1
+ */
+:root {
+  color-scheme: light;
+
+  --c-bg: 244 248 247; /* #F4F8F7 subtle green-grey canvas */
+  --c-surface: 255 255 255; /* #FFFFFF crisp white */
+  --c-surface-2: 247 250 249; /* #F7FAF9 barely lifted */
+  --c-border: 220 232 229; /* #DCE8E5 */
+  --c-content: 23 26 25; /* #171A19 charcoal ink */
+  --c-muted: 104 113 111; /* #68716F secondary text */
+  --c-faint: 92 100 98; /* #5C6462 readable tertiary */
+  --c-primary: 15 118 110; /* #0F766E Deep Teal — accent only */
+  --c-primary-fg: 255 255 255;
+  --c-primary-ink: 15 118 110; /* #0F766E same teal for links */
+  --c-ink: 23 26 25; /* #171A19 charcoal button pill */
+  --c-ink-fg: 255 255 255;
+  --c-ink-hover: 42 48 46; /* #2A302E */
+  --c-positive: 16 110 70; /* #106E46 readable success */
+  --c-neutral: 142 86 0; /* #8E5600 readable warning */
+  --c-negative: 180 40 40; /* #B42828 readable error */
+
+  --c-scrollbar: 200 210 207; /* #C8D2CF neutral scrollbar */
+
+  --s-card: 0 1px 2px rgba(0, 0, 0, 0.03), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --s-card-hover: 0 2px 6px rgba(0, 0, 0, 0.05), 0 6px 20px rgba(0, 0, 0, 0.08);
+  --s-soft: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --c-bg: 12 14 13; /* #0C0E0D near-black, warm neutral */
+  --c-surface: 24 27 26; /* #181B1A warm dark surface */
+  --c-surface-2: 36 40 38; /* #242826 */
+  --c-border: 52 58 56; /* #343A38 */
+  --c-content: 237 240 239; /* #EDF0EF warm white */
+  --c-muted: 156 163 161; /* #9CA3A1 */
+  --c-faint: 112 120 118; /* #707876 */
+  --c-primary: 45 200 182; /* #2DC8B6 lifted teal for dark */
+  --c-primary-fg: 12 14 13; /* dark text on teal */
+  --c-primary-ink: 80 218 200; /* #50DAC8 bright teal for links */
+  --c-ink: 237 240 239; /* pill inverts */
+  --c-ink-fg: 24 27 26;
+  --c-ink-hover: 215 220 218; /* #D7DCDA */
+  --c-positive: 52 200 140; /* #34C88C */
+  --c-neutral: 230 175 50; /* #E6AF32 */
+  --c-negative: 240 100 100; /* #F06464 */
+
+  --c-scrollbar: 72 72 74; /* #48484A */
+
+  --s-card: 0 1px 3px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.4);
+  --s-card-hover: 0 2px 8px rgba(0, 0, 0, 0.35), 0 8px 24px rgba(0, 0, 0, 0.5);
+  --s-soft: 0 1px 2px rgba(0, 0, 0, 0.25), 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-bg text-content font-sans antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--c-scrollbar));
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  :focus-visible {
+    outline: 2px solid rgb(var(--c-primary));
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* ── Panels ── */
+  .panel {
+    @apply rounded-2xl border border-border bg-surface shadow-card;
+  }
+  .panel-2 {
+    @apply rounded-xl border border-border bg-surface-2;
+  }
+
+  /* A quiet, semantic terminal surface for transparent research logs. */
+  .research-terminal {
+    @apply bg-content text-surface;
+  }
+  .research-terminal__time {
+    @apply text-surface/60;
+  }
+  .research-terminal__message {
+    @apply text-surface/90;
+  }
+
+  /* ── Chips ── */
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-2.5 py-1 text-xs font-medium;
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-all focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-ink text-ink-fg hover:bg-ink-hover active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply btn border border-border bg-surface text-content hover:bg-surface-2 active:scale-[0.98];
+  }
+  .btn-blue {
+    @apply btn bg-primary text-primary-fg hover:opacity-90 active:scale-[0.98];
+  }
+
+  /* ── Form elements ── */
+  .input {
+    @apply w-full rounded-xl border border-border bg-surface px-3.5 py-2.5 text-sm text-content placeholder:text-faint focus:border-primary focus-visible:outline-none;
+  }
+  .label {
+    @apply mb-1.5 block text-sm font-medium text-content;
+  }
+  .link {
+    @apply text-primary-ink hover:underline;
+  }
+
+  /* ── Minimal company card ── */
+  .mi-card {
+    @apply rounded-2xl border border-border bg-surface p-5 text-left transition-shadow;
+  }
+  .mi-card:hover {
+    @apply shadow-card;
+  }
+}
+
+/*
+ * Animated border shimmer — works in ALL browsers (no @property / Houdini).
+ *
+ * The trick: instead of animating a CSS custom property (which needs
+ * @property support), we rotate the ENTIRE ::before pseudo-element. It's
+ * oversized (150% of the card) so the conic gradient covers the card even
+ * while spinning. The card's ::after fills the interior, leaving only the
+ * 2px border gap where the gradient shines through.
+ */
+.glow-border {
+  position: relative;
+  overflow: hidden;
+  border: none !important;
+  border-radius: 12px;
+  isolation: isolate;
+}
+.glow-border::before {
+  content: '';
+  position: absolute;
+  /* Oversized so the rotating square always covers the rectangular card */
+  width: 200%;
+  padding-bottom: 200%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(
+    transparent 0%,
+    transparent 25%,
+    rgb(var(--c-primary) / 0.8) 30%,
+    rgb(var(--c-primary)) 35%,
+    rgb(var(--c-primary) / 0.8) 40%,
+    transparent 45%,
+    transparent 100%
+  );
+  animation: glow-spin 3s linear infinite;
+  z-index: 0;
+}
+.glow-border::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 10px;
+  background: rgb(var(--c-surface));
+  z-index: 0;
+}
+/* Card content must sit above the pseudo-elements */
+.glow-border > * {
+  position: relative;
+  z-index: 1;
+}
+@keyframes glow-spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glow-border::before {
+    animation: none;
+    opacity: 0.3;
+  }
+}
+
+/* Estimated figures render visibly softer — striped, not solid (system §4). */
+.mi-est-stripes {
+  background-image: repeating-linear-gradient(135deg, currentColor 0 3px, transparent 3px 6px);
+}
+
+/* Legacy logo chip (dashboard header etc.). */
+.game-card__logo {
+  @apply border border-border bg-surface;
+}
+
+/* Gold rarity stamp for top tiers — kept minimal. */
+.tcg-stamp-foil {
+  background: linear-gradient(120deg, #f3e08a 0%, #d9a521 45%, #f6e7a4 100%);
+  color: #3d2e05;
+  border: 1px solid rgba(61, 46, 5, 0.25);
+}
+
+/* Modal / overlay entrance animations. */
+@keyframes mi-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes mi-modal-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+.mi-overlay-in {
+  animation: mi-fade-in 0.16s ease-out;
+}
+.mi-modal-in {
+  animation: mi-modal-in 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Market-brief carousel. */
+@keyframes mi-brief-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.mi-brief-in {
+  animation: mi-brief-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .mi-brief-in {
+    animation: none;
+  }
+}
+
+/* Print / PDF export. */
+@media print {
+  aside,
+  header,
+  .no-print {
+    display: none !important;
+  }
+  main {
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+  .panel {
+    box-shadow: none !important;
+    border: none !important;
+  }
+  body {
+    background: #fff !important;
+  }
+}
+
+/* Markdown. */
+.markdown {
+  @apply text-sm leading-relaxed text-muted;
+}
+.markdown h1 {
+  @apply mb-2 font-display text-2xl font-semibold text-content;
+}
+.markdown h2 {
+  @apply mb-2 mt-5 font-display text-lg font-semibold text-content;
+}
+.markdown p {
+  @apply my-2;
+}
+.markdown ul {
+  @apply my-2 list-inside list-disc space-y-1;
+}
+.markdown blockquote {
+  @apply my-3 border-l-2 border-primary pl-3 italic text-content;
+}
+.markdown strong {
+  @apply text-content;
+}
+.markdown code {
+  @apply rounded bg-surface-2 px-1 py-0.5 font-mono text-xs text-content;
+}
+.markdown a {
+  @apply link;
+}
