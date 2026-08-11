@@ -1,0 +1,69 @@
+{
+  "name": "@mi/desktop",
+  "productName": "Stratemark",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "repository": "https://github.com/lYlarufAhmed/STRATEMARK.git",
+  "main": "dist/main.mjs",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build:main": "esbuild src/main.ts src/preload.ts --bundle --platform=node --format=esm --target=node20 --external:electron --outdir=dist --out-extension:.js=.mjs",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "build": "pnpm --filter @mi/web build && pnpm build:main",
+    "dev": "pnpm build && electron dist/main.mjs",
+    "dev:watch": "pnpm build:main && VITE_DEV_SERVER_URL=http://localhost:5173 electron dist/main.mjs",
+    "dist": "pnpm build && electron-builder --publish never"
+  },
+  "build": {
+    "appId": "com.marketintel.deckbuilder",
+    "productName": "Stratemark",
+    "icon": "build/icon.png",
+    "publish": {
+      "provider": "github",
+      "owner": "lYlarufAhmed",
+      "repo": "STRATEMARK"
+    },
+    "files": [
+      "dist/**",
+      "build/**"
+    ],
+    "extraResources": [
+      {
+        "from": "../web/dist",
+        "to": "web-dist"
+      }
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "mac": {
+      "icon": "build/icon.icns",
+      "target": "dmg",
+      "category": "public.app-category.productivity"
+    },
+    "win": {
+      "icon": "build/icon.png",
+      "target": "nsis"
+    },
+    "linux": {
+      "icon": "build/icon.png",
+      "target": "AppImage",
+      "category": "Office"
+    }
+  },
+  "dependencies": {
+    "@mi/contracts": "workspace:*",
+    "@mi/mocks": "workspace:*",
+    "@mi/research": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.0",
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.9"
+  }
+}
